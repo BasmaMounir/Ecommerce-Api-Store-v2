@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -17,4 +19,7 @@ public class Category {
     private String name;
     private String slug;
     private String image;
+
+    @OneToMany(cascade = CascadeType.ALL ,mappedBy = "category",orphanRemoval = true)
+    List<SubCategory> subCategories;
 }
