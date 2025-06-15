@@ -89,15 +89,99 @@ The Category module allows managing different product categories in the system.
 
 ---
 
+## 📂 SubCategories
+
+SubCategories represent more specific divisions under each main Category.  
+Each SubCategory is related to one Category and includes its own name, slug, and timestamps.
+
+### 📌 Fields
+
+- `id`: Unique identifier.
+- `name`: Name of the subcategory (e.g., "Laptops", "Shoes").
+- `slug`: URL-friendly version of the name (e.g., "laptops").
+- `categoryId`: ID of the parent category.
+- `createdAt`, `updatedAt`: Timestamps.
+
 ---
 
-## 📌 To Do (Coming Soon)
+### ✅ Endpoints
 
-- Product module
-- JWT Authentication
-- Pagination & Filtering
+#### 🔹 Get All SubCategories
+
+- **URL**: `/api/subcategories`
+- **Method**: `GET`
+- **Description**: Returns a list of all subcategories.
+
+📥 **Sample Response**:
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Laptops",
+    "slug": "laptops",
+    "categoryId": 7
+  },
+  {
+    "id": 2,
+    "name": "Shoes",
+    "slug": "shoes",
+    "categoryId": 5
+  }
+]
+```
 
 ---
+
+#### 🔹 Get SubCategories by Category
+
+- **URL**: `/api/subcategories/category/{categoryId}`
+- **Method**: `GET`
+- **Description**: Returns all subcategories related to a specific category.
+
+---
+
+#### 🔹 Create SubCategory
+
+- **URL**: `/api/subcategories`
+- **Method**: `POST`
+- **Description**: Create a new subcategory under a specific category.
+
+📤 **Sample Request Body**:
+
+```json
+{
+  "name": "Dresses",
+  "slug": "dresses",
+  "categoryId": 5
+}
+```
+
+---
+
+#### 🔹 Update SubCategory
+
+- **URL**: `/api/subcategories/{id}`
+- **Method**: `PUT`
+- **Description**: Update a subcategory’s details.
+
+---
+
+#### 🔹 Delete SubCategory
+
+- **URL**: `/api/subcategories/{id}`
+- **Method**: `DELETE`
+- **Description**: Delete a subcategory by its ID.
+
+---
+
+### 📎 Notes
+- Each subcategory must be linked to an existing category.
+- `name` field is unique and validated.
+- The `slug` should be unique and meaningful for better SEO and frontend integration.
+
+---
+
 
 ## 💻 Author
 
